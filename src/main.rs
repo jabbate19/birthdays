@@ -17,7 +17,6 @@ async fn main() {
         &LDAP_PW,
     ).await;
     println!("LDAP client initialized");
-    println!("{}", SLACK_TOKEN);
     let d = Local::today().naive_local();
     let date_string = format!("{:02}{:02}", &d.month(), &d.day());
     let members = ldap_client.search_birthday(&date_string).await;
