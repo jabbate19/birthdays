@@ -1,9 +1,9 @@
-FROM docker.io/rust:1.40 as builder
-WORKDIR /usr/src/birthday
+FROM docker.io/rust:latest
+
+WORKDIR /usr/src/birthdays
 COPY . .
+
 RUN cargo install --path .
 
-FROM debian:buster-slim
-RUN apt-get update && apt-get install -y extra-runtime-dependencies && rm -rf /var/lib/apt/lists/*
-COPY --from=builder /usr/local/cargo/bin/birthday /usr/local/bin/birthday
-CMD ["myapp"]
+CMD ["birthdays"]
+

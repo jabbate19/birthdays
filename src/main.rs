@@ -3,7 +3,7 @@ use chrono::Datelike;
 use std::env;
 use std::vec::Vec;
 
-use birthday::ldap::client as ldap_client;
+use birthdays::ldap::client as ldap_client;
 
 #[tokio::main]
 async fn main() {
