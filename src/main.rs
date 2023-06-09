@@ -29,6 +29,9 @@ async fn main() {
             });
         }
     }
+    if users.len() == 0 {
+        return;
+    }
     let mut output = String::from("Happy Birthday to ");
     if users.len() == 1 {
         output.push_str(&format!("{}!", users[0]));
