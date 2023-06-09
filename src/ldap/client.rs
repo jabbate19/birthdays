@@ -9,7 +9,7 @@ use trust_dns_resolver::{
 
 use super::user::{LdapUser, LdapUserChangeSet};
 
-const SEARCH_ATTRS: [&str; 11] = [
+const SEARCH_ATTRS: [&str; 12] = [
     "cn",
     "dn",
     "uid",
@@ -21,6 +21,7 @@ const SEARCH_ATTRS: [&str; 11] = [
     "drinkBalance",
     "birthday",
     "slackuid",
+    "nsaccountlock"
 ];
 
 #[derive(Clone)]
@@ -159,7 +160,7 @@ impl LdapClient {
             .search(
                 "cn=users,cn=accounts,dc=csh,dc=rit,dc=edu",
                 ldap3::Scope::Subtree,
-                &format!("(|(birthday=*{query}*))"),
+                &format!("(&(birthday=*{query}*)(!(nsaccountlock=TRUE)))"),
                 SEARCH_ATTRS,
             )
             .await
