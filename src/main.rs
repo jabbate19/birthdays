@@ -29,11 +29,10 @@ async fn main() {
             });
         }
     }
-    if users.len() == 0 {
-        return;
-    }
     let mut output = String::from("Happy Birthday to ");
-    if users.len() == 1 {
+    if users.len() == 0 {
+        output.push_str("no one. :sad-bidoof:");
+    } else if users.len() == 1 {
         output.push_str(&format!("{}!", users[0]));
     } else if users.len() == 2 {
         output.push_str(&format!("{} and {}!", users[0], users[1]));
