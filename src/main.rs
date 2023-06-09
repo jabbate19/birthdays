@@ -36,7 +36,7 @@ async fn main() {
         user_count => {
             for i in [..user_count-1] {
                 let s = &users[i];
-                output.push_str(&format!("{:?}, ", s));
+                output.push_str(&format!("{}, ", s));
             }
             output.push_str(&format!("and {}!", users[user_count-1]));
         }
