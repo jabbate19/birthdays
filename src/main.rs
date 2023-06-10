@@ -29,16 +29,17 @@ async fn main() {
         }
     }
     let mut output = String::from("Happy Birthday to ");
-    if users.len() == 1 {
-        output.push_str(&format!("{}!", users[0]));
-    } else if users.len() == 2 {
-        output.push_str(&format!("{} and {}!", users[0], users[1]));
-    } else {
-        for i in 0..users.len()-1 {
-            let s = &users[i];
-            output.push_str(&format!("{}, ", s));
+    match users.len() {
+        0 => output.push_str("no one. :sad-bidoof:");
+        1 => output.push_str(&format!("{}!", users[0]));
+        2 => output.push_str(&format!("{} and {}!", users[0], users[1]));
+        user_count => {
+            for i in [..user_count-1] {
+                let s = &users[i];
+                output.push_str(&format!("{}, ", s));
+            }
+            output.push_str(&format!("and {}!", users[user_count-1]));
         }
-        output.push_str(&format!("and {}!", users[users.len()-1]));
     }
     let mut map = HashMap::new();
     //map.insert("channel", "CBBK03MQ9");
