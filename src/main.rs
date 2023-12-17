@@ -30,13 +30,13 @@ async fn main() {
     }
     let mut output = String::from("Happy Birthday to ");
     match users.len() {
-        0 => output.push_str("no one. :sad-bidoof:");
-        1 => output.push_str(&format!("{}!", users[0]));
-        2 => output.push_str(&format!("{} and {}!", users[0], users[1]));
+        0 => output.push_str("no one. :sad-bidoof:"),
+        1 => output.push_str(&format!("{}!", users[0])),
+        2 => output.push_str(&format!("{} and {}!", users[0], users[1])),
         user_count => {
             for i in [..user_count-1] {
                 let s = &users[i];
-                output.push_str(&format!("{}, ", s));
+                output.push_str(&format!("{}, ", s[0]));
             }
             output.push_str(&format!("and {}!", users[user_count-1]));
         }
