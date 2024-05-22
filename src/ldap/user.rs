@@ -46,9 +46,7 @@ where
     T: FromStr,
     <T as FromStr>::Err: Debug,
 {
-    entry
-        .get(field)
-        .map(|f| f.get(0).unwrap().parse::<T>().unwrap())
+    entry.get(field).map(|f| f[0].parse::<T>().unwrap())
 }
 
 fn get_vec<T>(entry: &HashMap<String, Vec<String>>, field: &str) -> Vec<T>
